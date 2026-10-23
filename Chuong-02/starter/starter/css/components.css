@@ -378,3 +378,148 @@
     color: var(--color-text-muted);
   }
 }
+
+/* (ch2-T5): .table-wrap { overflow-x: auto } và .table (min-inline-size ~40rem, viền, hàng chẵn tô nền,
+   cột số căn phải) — bảng cuộn trong khung, trang không cuộn ngang */
+/* ---- Bảng: bọc trong .table-wrap để cuộn ngang RIÊNG bảng trên điện thoại ---- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.table {
+  inline-size: 100%;
+  min-inline-size: 40rem; /* dưới 640px thì cuộn trong khung */
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+
+  & caption {
+    padding: var(--space-4);
+    caption-side: top;
+    text-align: start;
+    font-weight: var(--weight-semibold);
+  }
+
+  & :is(th, td) {
+    padding: var(--space-3) var(--space-4);
+    border-block-start: 1px solid var(--color-border);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  & thead th {
+    background-color: var(--color-surface-muted);
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  & tbody tr:nth-child(even) {
+    background-color: color-mix(
+      in srgb,
+      var(--color-surface-muted) 40%,
+      transparent
+    );
+  }
+
+  & tbody tr:hover {
+    background-color: var(--color-surface-muted);
+  }
+
+  & td:last-child {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  & tfoot td {
+    text-align: start;
+    color: var(--color-text-muted);
+  }
+}
+
+/* (ch2-T5): .back-link, .detail__media, .detail__organizer, .prose (h2, ol/ul, li::marker),
+   .info-card với dl dàn Grid 2 cột (grid-template-columns: auto 1fr), .cta */
+/* ---- Trang chi tiết ---- */
+.back-link {
+  display: inline-block;
+  margin-block-end: var(--space-3);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.detail__media {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.detail__organizer {
+  margin-block-start: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.prose {
+  & h2 {
+    margin-block-end: var(--space-3);
+    font-size: var(--text-xl);
+  }
+
+  & :is(ol, ul) {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+    padding-inline-start: var(--space-6);
+  }
+
+  & li::marker {
+    color: var(--color-accent-strong);
+    font-weight: var(--weight-bold);
+  }
+}
+
+/* Hộp thông tin: <dl> dàn 2 cột bằng Grid (dt bên trái, dd bên phải) */
+.info-card {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+
+  & h2 {
+    margin-block-end: var(--space-4);
+    font-size: var(--text-lg);
+  }
+
+  & dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  & dt {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  & dd {
+    font-weight: var(--weight-semibold);
+  }
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-muted);
+
+  & p {
+    margin: 0;
+    font-weight: var(--weight-semibold);
+  }
+}
