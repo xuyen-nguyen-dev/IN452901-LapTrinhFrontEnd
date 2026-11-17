@@ -1,0 +1,176 @@
+/* ===== Biến dùng chung ===== */
+:root {
+  --color-primary: #006cb4;
+  --color-danger: #e40c24;
+  --color-text: #1f2933;
+  --color-border: #a1cafc;
+  --color-bg: #f5f8fb;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --radius: 0.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+/* ===== Đầu trang: Flexbox, logo trái – menu phải ===== */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-primary);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* ===== Nội dung chính ===== */
+main {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: var(--space-3);
+}
+
+h1 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+#search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+#search-form label {
+  flex-basis: 100%;
+  font-weight: 600;
+}
+
+#keyword {
+  flex: 1 1 12rem;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+#search-form button {
+  padding: var(--space-1) var(--space-3);
+  border: 0;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#status {
+  min-height: 1.5rem;
+}
+
+/* ===== Danh sách card: Grid mobile-first ===== */
+#event-list {
+  display: grid;
+  grid-template-columns: 1fr; /* điện thoại: 1 cột */
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  #event-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  #event-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Card ===== */
+.card {
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: #fff;
+}
+
+.card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.card h2 {
+  margin: var(--space-2) 0 var(--space-1);
+  font-size: 1.125rem;
+}
+
+.card p {
+  margin: 0 0 var(--space-1);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.125rem var(--space-1);
+  border-radius: var(--radius);
+  background-color: var(--color-danger);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ===== Chân trang ===== */
+.site-footer {
+  padding: var(--space-2);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
